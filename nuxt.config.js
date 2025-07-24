@@ -61,7 +61,7 @@ export default {
     autoFetchUser: false,
     strategies: {
       google: {
-        clientId: '70577645905-50j187224p7mdr9hga4u9l1rbbte8svd.apps.googleusercontent.com',
+        clientId: '662007494287-s8g6goovqut11r1htbmnspb3492ch2fc.apps.googleusercontent.com',
         scheme: 'oauth2',
         endpoints: {
           authorization: 'https://accounts.google.com/o/oauth2/auth',
@@ -74,7 +74,7 @@ export default {
         },
         responseType: 'token id_token',
         scope: ['openid', 'profile', 'email'],
-        redirectUri: 'http://localhost:3000/auth/callback',
+        redirectUri: process.env.REDIRECT_URI ,
         codeChallengeMethod: ''
       },
 
@@ -91,7 +91,7 @@ export default {
         responseType: 'code',
         grantType: 'authorization_code',
         codeChallengeMethod: '',
-        redirectUri: 'http://localhost:3000/auth/callback'
+        redirectUri: process.env.REDIRECT_URI
       }
     }
   },
