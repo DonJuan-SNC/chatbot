@@ -26,7 +26,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [ '~/plugins/chatbot.js' ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -74,7 +74,7 @@ export default {
         },
         responseType: 'token id_token',
         scope: ['openid', 'profile', 'email'],
-        redirectUri: process.env.REDIRECT_URI ,
+        redirectUri: process.env.REDIRECT_URI,
         codeChallengeMethod: ''
       },
 
@@ -91,7 +91,7 @@ export default {
         responseType: 'code',
         grantType: 'authorization_code',
         codeChallengeMethod: '',
-        redirectUri: process.env.REDIRECT_URI
+        redirectUri: 'http://localhost:3000/auth/callback'
       }
     }
   },

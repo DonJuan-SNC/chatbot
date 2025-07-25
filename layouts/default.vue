@@ -90,6 +90,10 @@ export default {
           icon: 'mdi-chat',
           title: 'CHATBOT',
           to: '/'
+        },{
+          icon: 'mdi-chat',
+          title: 'CHATBOT v2',
+          to: 'chatbot'
         },
       ],
       miniVariant: false,
