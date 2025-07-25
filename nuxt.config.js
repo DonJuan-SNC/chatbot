@@ -4,53 +4,54 @@ export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
-  // Global page headers: https://go.nuxtjs.dev/config-head
+  // Global page headers
   head: {
     titleTemplate: '%s - chatbot',
     title: 'chatbot',
-    htmlAttrs: {
-      lang: 'en'
-    },
+    htmlAttrs: { lang: 'en' },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
-  // Global CSS: https://go.nuxtjs.dev/config-css
+  // Global CSS
   css: [],
 
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [ '~/plugins/chatbot.js' ],
+  // Plugins
+  plugins: ['~/plugins/chatbot.js'],
 
-  // Auto import components: https://go.nuxtjs.dev/config-components
+  // Auto import components
   components: true,
 
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
- buildModules: [
-    '@nuxtjs/vuetify',
-  ],
+  // Modules for dev and build
+  buildModules: ['@nuxtjs/vuetify'],
 
-  modules: [
-    '@nuxtjs/axios',
-    '@nuxtjs/auth-next'
-  ],
+  // Runtime environment config for production safety
+  publicRuntimeConfig: {
+    baseURL: process.env.BASE_URL || 'http://localhost:8000',
+    githubRedirectUri: process.env.GITHUB_REDIRECT_URI || 'http://localhost:3000/auth/callback',
+    googleRedirectUri: process.env.GOOGLE_REDIRECT_URI || 'http://localhost:3000/auth/callback'
+  },
 
+  // Modules
+  modules: ['@nuxtjs/axios', '@nuxtjs/auth-next'],
+
+  // Axios Config (dynamic)
   axios: {
-    baseURL: 'http://localhost:8000',
+    baseURL: process.env.BASE_URL || 'http://localhost:8000',
     credentials: true
   },
 
-  // ✅ Chatbot API Middleware
+  // Chatbot API Middleware
   serverMiddleware: [
     { path: '/api/chat', handler: '~/server-middleware/chat.js' }
   ],
 
+  // Auth config with dynamic redirect URIs
   auth: {
     redirect: {
       login: '/auth/signin',
@@ -74,10 +75,9 @@ export default {
         },
         responseType: 'token id_token',
         scope: ['openid', 'profile', 'email'],
-        redirectUri: process.env.REDIRECT_URI,
+        redirectUri: process.env.GOOGLE_REDIRECT_URI || 'http://localhost:3000/auth/callback',
         codeChallengeMethod: ''
       },
-
       github: {
         clientId: 'Ov23litHqkxnePB9LwU9',
         clientSecret: '842c730ca1f6bda70cc69d3c797ef94402146a74',
@@ -91,12 +91,12 @@ export default {
         responseType: 'code',
         grantType: 'authorization_code',
         codeChallengeMethod: '',
-        redirectUri: 'http://localhost:3000/auth/callback'
+        redirectUri: process.env.GITHUB_REDIRECT_URI || 'http://localhost:3000/auth/callback'
       }
     }
   },
 
-  // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
+  // Vuetify Config
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
@@ -115,6 +115,6 @@ export default {
     }
   },
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
+  // Build config
   build: {}
 }
