@@ -33,8 +33,8 @@ export default {
   // Runtime environment config for production safety
   publicRuntimeConfig: {
     baseURL: process.env.BASE_URL || 'http://localhost:8000',
-    githubRedirectUri: process.env.GITHUB_REDIRECT_URI,
-    googleRedirectUri: process.env.GOOGLE_REDIRECT_URI
+    githubRedirectUri: process.env.GITHUB_REDIRECT_URI || 'http://localhost:3000/auth/callback',
+    googleRedirectUri: process.env.GOOGLE_REDIRECT_URI || 'http://localhost:3000/auth/callback'
   },
 
   // Modules
@@ -75,7 +75,7 @@ export default {
         },
         responseType: 'token id_token',
         scope: ['openid', 'profile', 'email'],
-        redirectUri: process.env.GOOGLE_REDIRECT_URI,
+        redirectUri: process.env.GOOGLE_REDIRECT_URI || 'http://localhost:3000/auth/callback',
         codeChallengeMethod: ''
       },
       github: {
@@ -91,7 +91,7 @@ export default {
         responseType: 'code',
         grantType: 'authorization_code',
         codeChallengeMethod: '',
-        redirectUri: process.env.GITHUB_REDIRECT_URI
+        redirectUri: process.env.GITHUB_REDIRECT_URI || 'http://localhost:3000/auth/callback'
       }
     }
   },
