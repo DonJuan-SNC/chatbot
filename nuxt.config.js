@@ -33,8 +33,8 @@ export default {
   // Runtime environment config for production safety
   publicRuntimeConfig: {
     baseURL: process.env.BASE_URL || 'http://localhost:8000',
-    githubRedirectUri: process.env.GITHUB_REDIRECT_URI || 'http://localhost:3000/auth/callback',
-    googleRedirectUri: process.env.GOOGLE_REDIRECT_URI || 'http://localhost:3000/auth/callback'
+    githubRedirectUri: process.env.GITHUB_REDIRECT_URI || 'http://chatbot-seven-delta-36.vercel.app/auth/callback',
+    googleRedirectUri: process.env.GOOGLE_REDIRECT_URI || 'http://chatbot-seven-delta-36.vercel.app/auth/callback'
   },
 
   // Modules
