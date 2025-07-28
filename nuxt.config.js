@@ -32,9 +32,9 @@ export default {
 
   // Runtime environment config for production safety
   publicRuntimeConfig: {
-    baseURL: process.env.BASE_URL || 'http://localhost:8000',
-    githubRedirectUri: process.env.GITHUB_REDIRECT_URI || 'http://chatbot-seven-delta-36.vercel.app/auth/callback',
-    googleRedirectUri: process.env.GOOGLE_REDIRECT_URI || 'http://chatbot-seven-delta-36.vercel.app/auth/callback'
+    baseURL: process.env.BASE_URL,
+    githubRedirectUri: process.env.GITHUB_REDIRECT_URI,
+    googleRedirectUri: process.env.GOOGLE_REDIRECT_URI
   },
 
   // Modules
@@ -42,7 +42,7 @@ export default {
 
   // Axios Config (dynamic)
   axios: {
-    baseURL: process.env.BASE_URL || 'http://localhost:8000',
+    baseURL: process.env.BASE_URL,
     credentials: true
   },
 
@@ -75,7 +75,7 @@ export default {
         },
         responseType: 'token id_token',
         scope: ['openid', 'profile', 'email'],
-        redirectUri: process.env.GOOGLE_REDIRECT_URI || 'http://chatbot-seven-delta-36.vercel.app/auth/callback',
+        redirectUri: process.env.GOOGLE_REDIRECT_URI,
         codeChallengeMethod: ''
       },
       github: {
@@ -91,7 +91,7 @@ export default {
         responseType: 'code',
         grantType: 'authorization_code',
         codeChallengeMethod: '',
-        redirectUri: process.env.GITHUB_REDIRECT_URI || 'http://chatbot-seven-delta-36.vercel.app/auth/callback'
+        redirectUri: process.env.GITHUB_REDIRECT_URI
       }
     }
   },
