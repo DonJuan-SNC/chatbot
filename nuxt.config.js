@@ -75,7 +75,7 @@ export default {
         },
         responseType: 'token id_token',
         scope: ['openid', 'profile', 'email'],
-        redirectUri: process.env.GOOGLE_REDIRECT_URI || 'http://localhost:3000/auth/callback',
+        redirectUri: process.env.GOOGLE_REDIRECT_URI || 'http://chatbot-seven-delta-36.vercel.app/auth/callback',
         codeChallengeMethod: ''
       },
       github: {
