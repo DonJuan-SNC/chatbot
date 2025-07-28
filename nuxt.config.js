@@ -91,7 +91,7 @@ export default {
         responseType: 'code',
         grantType: 'authorization_code',
         codeChallengeMethod: '',
-        redirectUri: process.env.GITHUB_REDIRECT_URI || 'http://localhost:3000/auth/callback'
+        redirectUri: process.env.GITHUB_REDIRECT_URI || 'http://chatbot-seven-delta-36.vercel.app/auth/callback'
       }
     }
   },
